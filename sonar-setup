@@ -1,0 +1,31 @@
+    2  sudo apt-get update
+    3  sudo apt-get install wget unzip -y
+    4  sudo apt-get install openjdk-11-jdk -y
+    5  sudo update-alternatives --config java
+    6  java -version
+    7  sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+    8  wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
+    9  sudo apt-get -y install postgresql postgresql-contrib
+   10  sudo systemctl start postgresql
+   11  sudo systemctl enable postgresql
+   12  sudo systemctl status postgresql
+   13  sudo passwd postgres
+   14  su - postgres
+   15  cd /tmp
+   16  sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.9.3.zip
+   17  sudo unzip sonarqube-7.9.3.zip -d /opt
+   18  sudo mv /opt/sonarqube-7.9.3 /opt/sonarqube
+   19  sudo groupadd sonar
+   20  sudo useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonar sonar 
+   21  ls -lrt /opt/sonarqube/
+   22  sudo vi /opt/sonarqube/conf/sonar.properties
+   23  sudo vi /opt/sonarqube/bin/linux-x86-64/sonar.sh
+   24  sudo su sonar
+   25  sudo vi /etc/systemd/system/sonar.service
+   26  sudo systemctl start sonar
+   27  sudo systemctl enable sonar
+   28  sudo systemctl status sonar
+
+sudo bash -c "echo 'vm.max_map_count=262144' >> /etc/sysctl.conf" && sudo sysctl -p 
+
+

@@ -1,0 +1,6 @@
+
+docker-compose -f sonar-docker-compose.yml up -d
+
+docker-compose -f nexus-docker-compose.yml up -d
+
+docker-compose -f jenkins-docker-compose.yml up -d
